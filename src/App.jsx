@@ -7,8 +7,8 @@ const App = () => {
 
   return (
     <div className={styles.gridHomePage}>
+    <SideBar />      
     <DashBoard />
-    <SideBar />
     </div>
 
   );
