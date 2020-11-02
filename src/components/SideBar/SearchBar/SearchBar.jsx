@@ -1,18 +1,13 @@
 import React from "react";
 import styles from "./SearchBar.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { Input } from 'semantic-ui-react'
 
 
-const SearchBar = () => {
-
+const SearchBar = (props) => {
+const { updateDrinksText } = props;
 
   return (
-    <div className={styles.searchContainer}>
-      <input type="text" placeholder="search..." />
-      <button>search</button> 
-    </div>
-    
+    <Input icon='search' placeholder='Search...' onInput={e => updateDrinksText(e.target.value)}  />
   );
 };
 
