@@ -8,7 +8,8 @@ const CardItem = (props) => {
     image_url,
     description,
     tagline,
-    first_brewed
+    first_brewed,
+    abv
   } =props.drinks
   return (
     <>
@@ -19,26 +20,11 @@ const CardItem = (props) => {
       <Grid.Column width={9}>
         <h2>{name}</h2>
         <h3>Made In:{first_brewed}</h3>
-        <h3>{tagline}</h3>
+        <p>{abv}%</p>
         <p>{description}</p>
       </Grid.Column>
-
     </Grid>
-
-    {/* <Card.Group itemsPerRow={2}>
-      <Card className="removedCardBoarder">
-
-      </Card>
-      <Card className="removedCardBoarder">
-
-      </Card>
-
-    </Card.Group> */}
- 
-
     </>
-
-
   );
 };
 

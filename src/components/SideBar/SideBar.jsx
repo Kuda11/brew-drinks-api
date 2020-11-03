@@ -4,7 +4,7 @@ import SearchBar from './SearchBar'
 
 
 const SideBar = (props) => {
-const {updateDrinksText}=props;
+const { updateDrinksText }=props;
 
   return (
     <>
