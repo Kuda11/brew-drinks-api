@@ -1,18 +1,16 @@
 import React from "react";
-import styles from "./CardItem.module.scss";
-import { Grid, Card, Image } from 'semantic-ui-react'
+import { Grid, Image } from 'semantic-ui-react'
 
 const CardItem = (props) => {
   const {
     name,
     image_url,
     description,
-    tagline,
     first_brewed,
     abv
   } =props.drinks
+  
   return (
-    <>
     <Grid>
       <Grid.Column centered width={4}>
         <Image className='img' src={image_url}/>   
@@ -24,7 +22,6 @@ const CardItem = (props) => {
         <p>{description}</p>
       </Grid.Column>
     </Grid>
-    </>
   );
 };
 
