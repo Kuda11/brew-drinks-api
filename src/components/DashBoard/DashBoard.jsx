@@ -15,7 +15,7 @@ const DashBoard = (props) => {
             </Card>
           )
         })}
-        </Card.Group>
+      </Card.Group>
     </section>
   );
 };

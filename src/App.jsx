@@ -4,16 +4,19 @@ import DashBoard from './components/DashBoard'
 import SideBar from './components/SideBar'
 import 'semantic-ui-css/semantic.min.css'
 import NavBar from './components/NavBar';
+import { Dimmer, Card, Loader } from 'semantic-ui-react';
 
 const App = () => {
   const [drinks, setDrinks] = useState([])
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
-     fetch('https://api.punkapi.com/v2/beers')
-    .then(res => res.json())
-    .then((res) => {
-      setDrinks(res)
-      console.log("first one")
-    } );
+    setLoading(true)
+    fetch('https://api.punkapi.com/v2/beers')
+      .then(res => res.json())
+      .then((res) => {
+        setDrinks(res)
+        setLoading(false)
+      });
   }, [])
 
   const grabDrinks = (searchTerm) => {
@@ -21,23 +24,40 @@ const App = () => {
       return
     } else {
       fetch("https://api.punkapi.com/v2/beers/?beer_name=" + searchTerm)
-      .then((res) => res.json())
-      .then((res) => {
-        setDrinks(res)
-        console.log("getDrinksByName was called")
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => res.json())
+        .then((res) => {
+          setDrinks(res)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
+
+  if (loading) {
+    return (
+      <div>
+        <NavBar />
+        <div className={styles.gridHomePage}>
+          <SideBar />
+          <section >
+            <Card.Group itemsPerRow={1}>
+              <Dimmer active>
+                <Loader size='massive' >Loading</Loader>
+              </Dimmer>
+            </Card.Group>
+          </section>
+        </div>
+      </div>
+    )
+  }
   return (
     <div>
-    <NavBar/>  
-    <div className={styles.gridHomePage}>
-    <SideBar updateDrinksText={grabDrinks}/>       
-    <DashBoard drinks={drinks} />
-    </div>
+      <NavBar />
+      <div className={styles.gridHomePage}>
+        <SideBar updateDrinksText={grabDrinks} />
+        <DashBoard drinks={drinks} />
+      </div>
     </div>
 
 

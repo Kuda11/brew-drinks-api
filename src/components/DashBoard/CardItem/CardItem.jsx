@@ -8,12 +8,12 @@ const CardItem = (props) => {
     description,
     first_brewed,
     abv
-  } =props.drinks
-  
+  } = props.drinks
+
   return (
     <Grid>
       <Grid.Column centered width={4}>
-        <Image className='img' src={image_url}/>   
+        <Image className='img' src={image_url} />
       </Grid.Column>
       <Grid.Column width={9}>
         <h2>{name}</h2>
