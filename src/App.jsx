@@ -53,6 +53,7 @@ const App = () => {
   }
   return (
     <div>
+      <h1>hello</h1>         
       <NavBar />
       <div className={styles.gridHomePage}>
         <SideBar updateDrinksText={grabDrinks} />
